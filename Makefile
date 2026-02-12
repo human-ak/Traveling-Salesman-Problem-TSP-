@@ -13,16 +13,18 @@ install:
 # global-install: install language-install
 
 test:
+	python -m pytest -vv test_*.py
 	#ignores the virus of pandas warnings
-	python -m pytest -vv -p no:warnings test_*.py tests/
+	#python -m pytest -vv -p no:warnings test_*.py tests/
 
 format:	
-	black .
+	black *.py
 
-refactor: format lint
+# refactor: format lint
 
 lint:
-	find . -type f -name "*.py" \
-	 | xargs pylint --disable=R,C --ignore-patterns=test_.*?py 
+	pylint --disable=R,C --ignore-patterns=test_.*?py *.py
+# 	find . -type f -name "*.py" \
+# 	 | xargs pylint --disable=R,C --ignore-patterns=test_.*?py 
 
 all: install lint test
