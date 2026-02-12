@@ -17,6 +17,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements.txt (optional - can be done in postCreateCommand instead)
-COPY requirements.txt /tmp/pip-tmp/
-RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
-   && rm -rf /tmp/pip-tmp
+# COPY requirements.txt /tmp/pip-tmp/
+# RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
+#    && rm -rf /tmp/pip-tmp
